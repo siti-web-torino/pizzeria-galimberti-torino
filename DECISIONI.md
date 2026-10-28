@@ -128,3 +128,11 @@ vista dall'alto, quindi ritagliata in cerchio sta in piedi da sola sul rosso e p
 sulla pala. Diventa l'immagine d'apertura; `pizza.png` (cornicione) passa alla scheda "Le
 speciali" per non avere la stessa foto due volte. Che la pizza in foto sia "La Mortadella" del
 menu resta una mia deduzione: il testo alternativo descrive solo gli ingredienti visibili.
+
+## 8. Terzo effetto: "componi la tua teglia" (richiesta dell'utente, 28/10/2026)
+Scelto perché, oltre a stupire, porta a un'azione che vale per il locale: le teglie per feste
+ed eventi sono l'ordine più grosso che il volantino promuove ("fino a 4 gusti diversi",
+`menu2.png`). Non è un ordine online e non mostra prezzi (non li conosco): finisce in una
+telefonata o in un testo da copiare. La vecchia scheda "Teglie su ordinazione" in "Cosa
+facciamo" è stata tolta per non ripetere la stessa frase due volte; le schede restano due
+(tegamino e speciali).

@@ -1,3 +1,4 @@
+import ComponiTeglia from "@/components/componi-teglia";
 import { DaConfermare } from "@/components/da-confermare";
 import { IconaPosizione, IconaSacchetto, IconaTelefono } from "@/components/icone";
 import PastaCheSiStende from "@/components/pasta-che-si-stende";
@@ -153,28 +154,6 @@ export default async function Home() {
             <div className="schede">
               <article className="scheda">
                 <img
-                  src={FOTO.teglia.src}
-                  width={FOTO.teglia.w}
-                  height={FOTO.teglia.h}
-                  alt={FOTO.teglia.alt}
-                  loading="lazy"
-                  decoding="async"
-                />
-                <h3>Teglie su ordinazione</h3>
-                <p className="citazione">{SITO.frasi.teglie}</p>
-                <p className="nota-piccola">
-                  Prezzo e preavviso: <DaConfermare motivo="Non sono nel volantino" />
-                </p>
-                <p>
-                  <a className="bottone bottone-rosso" href={`tel:${FISSO.tel}`}>
-                    <IconaTelefono />
-                    Chiama per la teglia
-                  </a>
-                </p>
-              </article>
-
-              <article className="scheda">
-                <img
                   src={FOTO.tegamino.src}
                   width={FOTO.tegamino.w}
                   height={FOTO.tegamino.h}
@@ -222,6 +201,29 @@ export default async function Home() {
                 </p>
               </article>
             </div>
+          </div>
+        </section>
+
+        {/* --- Teglie su ordinazione ------------------------------------ */}
+        <section className="sezione teglie" id="teglie" aria-labelledby="titolo-teglie">
+          <div className="contenitore teglie-griglia">
+            <div>
+              <h2 className="titolo-sezione" id="titolo-teglie">
+                Teglie su ordinazione
+              </h2>
+              <p className="citazione">{SITO.frasi.teglie}</p>
+              <p className="nota-piccola">
+                Prezzo, misure, preavviso e gusti disponibili per le teglie:{" "}
+                <DaConfermare motivo="Non sono nel volantino" />
+              </p>
+            </div>
+            <ComponiTeglia
+              foto={FOTO.teglia.src}
+              telefono={FISSO}
+              gusti={menu.categorie
+                .filter((c) => ["pizze", "bianche", "speciali"].includes(c.id))
+                .flatMap((c) => c.voci.map((v) => v.nome))}
+            />
           </div>
         </section>
 

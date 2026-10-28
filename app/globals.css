@@ -290,6 +290,7 @@ a {
   font-weight: 800;
   font-size: var(--t-m);
   text-decoration: none;
+  background: transparent;
   border: 2px solid currentColor;
   cursor: pointer;
 }
@@ -440,6 +441,151 @@ a {
   border-left: 4px solid var(--rosso);
   padding-left: var(--s-4);
   font-weight: 600;
+}
+
+/* --- Componi la tua teglia (components/componi-teglia.tsx) --------------- */
+
+.teglie {
+  background: var(--carta-2);
+}
+.teglie-griglia {
+  display: grid;
+  gap: var(--s-5);
+}
+/* Senza questo la fila dei gusti, lunghissima, allarga tutta la pagina. */
+.teglie-griglia > * {
+  min-width: 0;
+}
+.teglie .citazione {
+  margin: 0 0 var(--s-3);
+}
+
+.teglia {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  aspect-ratio: 4 / 3;
+  border: 0.6rem solid #2a2422; /* la teglia nera di teglia.png */
+  border-radius: 0.75rem;
+  background-size: cover;
+  background-position: 50% 60%;
+  box-shadow: 0 1rem 2rem rgba(35, 31, 30, 0.25);
+  overflow: hidden;
+}
+.teglia-vuota {
+  margin: auto;
+  background: rgba(35, 31, 30, 0.75);
+  color: #fff;
+  font-weight: 800;
+  padding: var(--s-2) var(--s-4);
+  border-radius: 999px;
+}
+.teglia-fila {
+  flex: 1;
+  display: flex;
+}
+.teglia-fila + .teglia-fila {
+  border-top: 3px solid rgba(255, 248, 235, 0.95);
+}
+.teglia-pezzo {
+  position: relative;
+  flex: 1;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding: var(--s-2);
+  min-width: 0;
+}
+/* Il taglio: una linea chiara che scende come il coltello. */
+.teglia-pezzo + .teglia-pezzo::before {
+  content: "";
+  position: absolute;
+  left: -1.5px;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: rgba(255, 248, 235, 0.95);
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.35);
+  transform-origin: top;
+  animation: taglio 0.45s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+.teglia-pezzo span {
+  background: #fff;
+  color: var(--inchiostro);
+  font-weight: 800;
+  font-size: var(--t-xs);
+  line-height: 1.2;
+  text-align: center;
+  padding: 0.3em 0.6em;
+  border-radius: 999px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 100%;
+  animation: etichetta 0.4s 0.15s cubic-bezier(0.2, 0.8, 0.2, 1.3) both;
+}
+@keyframes taglio {
+  from {
+    transform: scaleY(0);
+  }
+}
+@keyframes etichetta {
+  from {
+    transform: translateY(0.75rem) scale(0.6);
+    opacity: 0;
+  }
+}
+
+.teglia-conta {
+  font-weight: 700;
+  margin: var(--s-3) 0 var(--s-2);
+}
+
+/* Tre file di gusti che scorrono di lato: tutti a portata di pollice. */
+.teglia-gusti {
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-rows: repeat(3, auto);
+  gap: var(--s-2);
+  overflow-x: auto;
+  list-style: none;
+  margin: 0 calc(var(--gutter) * -1);
+  padding: var(--s-1) var(--gutter) var(--s-3);
+  scrollbar-width: thin;
+}
+.teglia-gusti button {
+  min-height: var(--tocco);
+  padding: 0 var(--s-4);
+  font: inherit;
+  font-size: var(--t-s);
+  font-weight: 700;
+  white-space: nowrap;
+  color: var(--inchiostro);
+  background: #fff;
+  border: 1.5px solid var(--inchiostro);
+  border-radius: 999px;
+  cursor: pointer;
+}
+.teglia-gusti button[aria-pressed="true"] {
+  background: var(--rosso);
+  border-color: var(--rosso);
+  color: #fff;
+}
+.teglia-gusti button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.teglia-ordine {
+  margin-top: var(--s-4);
+  padding: var(--s-4);
+  background: #fff;
+  border-left: 4px solid var(--rosso);
+}
+.teglia-ordine p {
+  margin: 0 0 var(--s-3);
+  font-weight: 700;
 }
 
 /* --- Menu --------------------------------------------------------------- */
@@ -770,8 +916,18 @@ a {
     margin-inline: auto;
   }
 
+  .teglie-griglia {
+    grid-template-columns: 0.8fr 1.2fr;
+    gap: var(--s-7);
+    align-items: start;
+  }
+  .teglia-gusti {
+    margin-inline: 0;
+    padding-inline: 0;
+  }
+
   .schede {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: var(--s-5);
   }
 

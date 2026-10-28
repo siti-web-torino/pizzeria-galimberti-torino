@@ -80,3 +80,14 @@ con Playwright a 390, 768 e 1280 px (`strumenti/prova-giro.js`): nessuno scorrim
 orizzontale, nessun errore; con "riduci movimento" niente entrata e niente rotazione.
 Limite vero: la foto originale è 683 px, quindi sui telefoni ad alta densità la pizza è un po'
 morbida. Con una foto dall'alto più grande (almeno 1600 px) l'effetto rende molto di più.
+
+## "Componi la tua teglia" (aggiunto su richiesta dell'utente)
+Sezione "Teglie su ordinazione": si toccano fino a 4 gusti e la foto della teglia
+(`teglia.png`) si taglia da sola in 1, 2, 3 fette o in 4 a croce, con il nome su ogni fetta.
+Sotto: "Vorrei una teglia con: …", "Chiama per ordinarla" e "Copia l'ordine". Provato con
+Playwright a 390 e 1280 px (`strumenti/prova-teglia.js`): al quarto gusto gli altri 49 si
+disattivano, la copia mette il testo giusto negli appunti, togliendo un gusto la teglia torna
+a 3 fette. Difetto trovato e corretto: la fila dei gusti allargava la pagina a 2.332 px
+(`min-width: 0` sulla griglia). I gusti sono quelli di Pizze, Bianche e Speciali del menu
+(si aggiornano dall'admin); quali gusti si possono fare in teglia, prezzo, misure e preavviso
+restano [DA CONFERMARE].

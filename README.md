@@ -43,7 +43,7 @@ voce la conferma, "Il menu è giusto" conferma tutto il menu.
 | Lunedì chiuso | Dedotto da "martedì-domenica" | note, `menu2.png` |
 | Link Just Eat | Le note lo lasciano vuoto; trovato in rete con lo stesso indirizzo | ricerca web |
 | Consegna € 2,00 | Dal volantino, data ignota; zona e ordine minimo non noti | `menu2.png` |
-| Teglie su ordinazione: prezzo e preavviso | Non sono nel volantino | – |
+| Teglie su ordinazione: prezzo, misure, preavviso e quali gusti si possono fare | Non sono nel volantino; il gioco "componi la tua teglia" propone i gusti di Pizze, Bianche e Speciali | – |
 | Pizza al tegamino: gusti e prezzi | Il volantino la nomina ma non la elenca | `menu2.png` |
 | Quale numero mettere sul bottone "Chiama" | Messo il fisso (primo nel volantino) | `menu2.png` |
 | Glovo, Satispay, Facebook | Nel volantino ma non nelle note: **non mostrati** nel sito | `menu2.png` |
