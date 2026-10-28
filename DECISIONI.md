@@ -86,3 +86,28 @@ già nel volantino (`menu1.png` usa linee sotto ogni voce).
 | Il refuso "mortella" della pizza La Mortadella è mostrato come "mortadella" con [DA CONFERMARE] | Il nome della pizza rende evidente il refuso, ma è comunque una correzione mia |
 | Bottone principale "Chiama" sul 328 o sullo 011? Sul fisso 011 come primo, mobile come secondo | Il volantino mette lo 011 per primo (`menu2.png`); non so quale preferiscano: [DA CONFERMARE] |
 | Stato "Aperto adesso / Apre alle 18:00 / Chiuso oggi" calcolato sull'ora di Torino | Criterio 1 e 4. Se il titolare imposta ferie dall'admin, il sito dice "Chiuso per ferie fino al …" |
+
+## 4. Scelte tecniche
+| Scelta | Motivo |
+|---|---|
+| Next.js 16.4.3, CSS puro con variabili (niente Tailwind) | Serve un backend per l'admin (deroga). Il CSS a variabili rispetta "scale come variabili CSS" e resta leggibile |
+| Foto pre-ottimizzate in WebP (sharp, lato lungo ≤ 1600, senza EXIF) e servite come `<img>`, non con `next/image` | Nessun costo di ottimizzazione immagini sull'hosting, file già piccoli (40-85 KB) |
+| Home statica rigenerata (ISR): al salvataggio dall'admin (`revalidatePath`) e comunque ogni 5 minuti | Veloce, poche letture dal database (che resta nel piano gratuito), e il sito sta su anche se il database cade |
+| Stato "aperto adesso" calcolato nel browser sull'ora di Torino | La pagina è in cache: uno stato calcolato sul server potrebbe essere vecchio proprio alle 18:00 |
+| Menu a schede da telefono, tutto in colonne da tablet | Da telefono il menu completo era lungo 11 schermate (`docs/VERIFICA.md`) |
+| Foto di apertura `pizza.png` (non `teglia.png`) | Il cornicione maculato dice "forno caldo" a colpo d'occhio; la teglia va nella sezione teglie, dove spiega il prodotto |
+| `menu2.png` mai pubblicata, `tegamino.png` ritagliata sotto il volantino | Contengono foto di persone riconoscibili |
+| Store: Upstash Redis → file locale **solo** in sviluppo (o con `STORE_FILE=1`) → dati iniziali | In produzione senza database non si finge di salvare. L'admin lo dice con un riquadro rosso e blocca i campi; le action rifiutano comunque |
+| Lettura dal database con timeout di 2,5 s | Se Upstash è lento il sito non aspetta: mostra i dati iniziali |
+| Ogni sezione dei dati validata da sola con Zod | Una sezione rovinata non fa sparire le altre |
+| Salvataggio rifiutato se il database non si legge | Scrivere partendo dai dati iniziali cancellerebbe le altre modifiche del titolare |
+| Registro senza nome di chi modifica (Flow lo aveva) | L'admin è del solo titolare e non si salvano dati personali |
+| Password: blocco in `next.config.ts` (build e `next start`) e in `instrumentation.ts` (avvio su Vercel); oltre a vuota e d'esempio rifiuto anche sotto 10 caratteri e `AUTH_SECRET` sotto 32 | Su Vercel `next.config` gira solo in build: serve anche il controllo a runtime. La lunghezza minima è un'aggiunta mia, prudente |
+| Da Flow non ripresi: robots.ts (apriva ai crawler), sitemap, llms.txt, dati strutturati, contatori, meteo, calendario, design | Richiesta esplicita dell'utente |
+
+## 5. Hosting (dettagli e costi in RAPPORTO.md)
+Consiglio **Vercel Pro + Upstash Redis gratuito**. Il piano Hobby di Vercel non si può usare: la
+documentazione lo limita a uso personale non commerciale, e un sito che promuove un'attività
+(o che si viene pagati per fare o ospitare) è commerciale
+([Vercel, Fair use guidelines](https://vercel.com/docs/limits/fair-use-guidelines), aggiornata
+14/09/2026). Alternativa più economica non provata: Cloudflare Workers con l'adattatore OpenNext.

@@ -47,7 +47,18 @@ function credenzialiRedis() {
   const env = process.env;
   const url = env.KV_REST_API_URL || env.UPSTASH_REDIS_REST_URL;
   const token = env.KV_REST_API_TOKEN || env.UPSTASH_REDIS_REST_TOKEN;
-  return url && token ? { url, token } : null;
+  if (url && token) return { url, token };
+
+  // Con più database sullo stesso account il marketplace mette davanti il
+  // nome dello store (NOME_KV_REST_API_URL): si cercano per come finiscono.
+  // "KV_REST_API_READ_ONLY_TOKEN" non finisce per "KV_REST_API_TOKEN".
+  const cerca = (finali: string[]) =>
+    Object.entries(env).find(([k, v]) => v && finali.some((f) => k.endsWith(f)))?.[1];
+  const altroUrl = cerca(["KV_REST_API_URL", "REDIS_REST_URL"]);
+  const altroToken = cerca(["KV_REST_API_TOKEN", "REDIS_REST_TOKEN"]);
+  return altroUrl?.startsWith("https://") && altroToken
+    ? { url: altroUrl, token: altroToken }
+    : null;
 }
 
 function driverRedis(credenziali: { url: string; token: string }): Driver {

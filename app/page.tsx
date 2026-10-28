@@ -210,9 +210,9 @@ export default async function Home() {
                 />
                 <h3>Le speciali</h3>
                 <p>
-                  {speciali ? `${speciali.voci.length} pizze` : "Pizze"} fuori dal solito: con
-                  mortadella, burrata e pistacchio, con lardo e cipolla caramellata, con
-                  fagiolini, patate e pesto.
+                  {speciali ? `${speciali.voci.length} pizze` : "Pizze"} speciali, per esempio:
+                  mortadella, burrata e pistacchio; lardo e cipolla caramellata; fagiolini,
+                  patate e pesto.
                 </p>
                 <p>
                   <a className="bottone bottone-chiaro" href="#cat-speciali">
