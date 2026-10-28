@@ -1,0 +1,6 @@
+strumenti/
+node_modules/
+.next/
+.env*
+!.env.example
+data/*.json
