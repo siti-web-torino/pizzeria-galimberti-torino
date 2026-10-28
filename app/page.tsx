@@ -1,6 +1,7 @@
 import { DaConfermare } from "@/components/da-confermare";
 import { IconaPosizione, IconaSacchetto, IconaTelefono } from "@/components/icone";
 import PastaCheSiStende from "@/components/pasta-che-si-stende";
+import PizzaCheGira from "@/components/pizza-che-gira";
 import SchedeMenu from "@/components/schede-menu";
 import StatoApertura from "@/components/stato-apertura";
 import {
@@ -122,15 +123,12 @@ export default async function Home() {
                 </span>
               </div>
             </div>
-            <figure className="foto-apertura">
-              <img
-                src={FOTO.cornicione.src}
-                width={FOTO.cornicione.w}
-                height={FOTO.cornicione.h}
-                alt={FOTO.cornicione.alt}
-                fetchPriority="high"
-              />
-            </figure>
+            <PizzaCheGira
+              src={FOTO.dallalto.src}
+              w={FOTO.dallalto.w}
+              h={FOTO.dallalto.h}
+              alt={FOTO.dallalto.alt}
+            />
           </div>
         </section>
 
@@ -204,10 +202,10 @@ export default async function Home() {
 
               <article className="scheda">
                 <img
-                  src={FOTO.mortadella.src}
-                  width={FOTO.mortadella.w}
-                  height={FOTO.mortadella.h}
-                  alt={FOTO.mortadella.alt}
+                  src={FOTO.cornicione.src}
+                  width={FOTO.cornicione.w}
+                  height={FOTO.cornicione.h}
+                  alt={FOTO.cornicione.alt}
                   loading="lazy"
                   decoding="async"
                 />

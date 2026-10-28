@@ -74,6 +74,13 @@ export const FOTO = {
     h: 767,
     alt: "Pizza con mortadella, burrata e granella di pistacchio nel cartone da asporto",
   },
+  // pizza2.png ritagliata in cerchio (la pizza vista dall'alto), per l'apertura.
+  dallalto: {
+    src: "/img/pizza-dallalto.webp",
+    w: 680,
+    h: 680,
+    alt: "Pizza vista dall'alto con mortadella, burrata e granella di pistacchio",
+  },
   tegamino: {
     src: "/img/tegamino.webp",
     w: 676,

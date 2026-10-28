@@ -29,7 +29,7 @@ piccolo (134 px di larghezza originale).
 | Instagram | 390 | Link di testo alto meno di 44 px | Difficile da toccare | Corretto |
 | Testo "Le speciali" | tutte | "12 pizze fuori dal solito" | Frase da brochure | Ora: "12 pizze speciali, per esempio: …" |
 | Pagina 404 | tutte | Testo di Next in inglese | Fuori lingua | Corretto |
-| Prima schermata | 768 | La foto della pizza è piccola e ritagliata in verticale, il cornicione si perde | Estetica, non uso | **Non corretto**, da rivedere con foto migliori |
+| Prima schermata | 768 | La foto della pizza è piccola e ritagliata in verticale, il cornicione si perde | Estetica, non uso | Superato: ora c'è "la pizza che gira" |
 | Elenco del volantino | 1280 | Colonna stretta a sinistra, due terzi vuoti a destra | Spazio sprecato | Corretto il 28/10 con l'effetto "pasta che si stende": blocco giustificato centrato |
 | Logo | tutte | Il file è 134×68 px: a 2x (telefoni) è sfocato | Prima cosa che si vede | **Non correggibile** senza il file originale: va chiesto al locale |
 | Bibite | 390 | Cinque [DA CONFERMARE] di fila rendono la lista pesante | Ma sono dubbi veri sul volantino | Lasciato: si tolgono quando il titolare conferma |
@@ -71,3 +71,12 @@ a fine corsa ogni riga misura quanto il contenitore (356-357 px su 358 a 390 px)
 scorrimento orizzontale, nessun errore in console. Con "riduci movimento" le righe sono subito
 stese, senza animazione. Senza JavaScript resta l'elenco statico di prima. Costo: nessuna
 immagine né libreria, solo l'asse di larghezza del font già caricato.
+
+## Effetto "la pizza che gira" (aggiunto su richiesta dell'utente)
+In apertura, la pizza vista dall'alto (`pizza2.png`, ritagliata in cerchio, WebP con
+trasparenza, 79 KB) entra con mezzo giro e poi ruota mentre si scorre (0,12° per pixel). Da
+telefono spunta dal fondo dell'apertura, tagliata dal bordo; da 768 px sta a destra. Provato
+con Playwright a 390, 768 e 1280 px (`strumenti/prova-giro.js`): nessuno scorrimento
+orizzontale, nessun errore; con "riduci movimento" niente entrata e niente rotazione.
+Limite vero: la foto originale è 683 px, quindi sui telefoni ad alta densità la pizza è un po'
+morbida. Con una foto dall'alto più grande (almeno 1600 px) l'effetto rende molto di più.

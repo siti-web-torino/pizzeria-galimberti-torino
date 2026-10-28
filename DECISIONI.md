@@ -120,3 +120,11 @@ impaginazione), parla di pasta e forno senza illustrazioni inventate, funziona a
 (non dipende dall'apertura) e pesa zero (asse di larghezza del font Archivo, già caricato).
 Scartata un'insegna al neon "APERTO" che si accende alle 18: d'effetto, ma in una demo fatta di
 giorno si vedrebbe spenta, e il neon non è nell'identità del locale.
+
+## 7. Secondo effetto: "la pizza che gira" (richiesta dell'utente, 28/10/2026)
+L'utente voleva anche un effetto con un'immagine. Su un sito di cibo la gente guarda il cibo:
+l'effetto deve muovere la pizza vera, non decorazioni. `pizza2.png` è l'unica pizza intera
+vista dall'alto, quindi ritagliata in cerchio sta in piedi da sola sul rosso e può ruotare come
+sulla pala. Diventa l'immagine d'apertura; `pizza.png` (cornicione) passa alla scheda "Le
+speciali" per non avere la stessa foto due volte. Che la pizza in foto sia "La Mortadella" del
+menu resta una mia deduzione: il testo alternativo descrive solo gli ingredienti visibili.

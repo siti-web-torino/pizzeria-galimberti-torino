@@ -335,14 +335,35 @@ a {
   gap: var(--s-1);
 }
 
-.foto-apertura {
-  margin-inline: calc(var(--gutter) * -1);
+/* La pizza che gira (components/pizza-che-gira.tsx). Da telefono spunta dal
+   fondo dell'apertura, tagliata dal bordo; da tablet sta a destra, fuori dal bordo. */
+.apertura {
+  overflow: hidden;
 }
-.foto-apertura img {
+.pizza-giro {
+  position: relative;
+  height: min(78vw, 24rem);
+  margin-inline: calc(var(--gutter) * -1);
+  margin-bottom: calc(var(--s-6) * -1);
+}
+.pizza-giro-disco {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: min(118vw, 36rem);
+  translate: -44% 0;
+  animation: pizza-entra 1.3s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+.pizza-giro img {
   width: 100%;
-  aspect-ratio: 4 / 3;
-  object-fit: cover;
-  object-position: 50% 60%;
+  border-radius: 50%;
+  filter: drop-shadow(0 1.25rem 2rem rgba(0, 0, 0, 0.45));
+  will-change: transform;
+}
+@keyframes pizza-entra {
+  from {
+    transform: rotate(-160deg) scale(0.85);
+  }
 }
 
 /* --- Cosa facciamo ------------------------------------------------------ */
@@ -727,13 +748,17 @@ a {
 
   .apertura-griglia {
     grid-template-columns: 1.1fr 0.9fr;
-    align-items: end;
+    align-items: stretch;
   }
-  .foto-apertura {
+  .pizza-giro {
+    height: 100%;
+    min-height: 26rem;
     margin: 0;
   }
-  .foto-apertura img {
-    aspect-ratio: 4 / 5;
+  .pizza-giro-disco {
+    top: 50%;
+    width: min(42vw, 31rem);
+    translate: -40% -50%;
   }
 
   /* Il blocco del volantino al centro, come il pannello rosso di menu2.png. */
@@ -775,9 +800,6 @@ a {
   }
   .apertura {
     padding-bottom: var(--s-7);
-  }
-  .foto-apertura img {
-    max-height: 34rem;
   }
   .colonne-menu {
     columns: 3;
