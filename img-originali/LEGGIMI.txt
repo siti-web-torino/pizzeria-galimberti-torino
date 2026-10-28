@@ -1,0 +1,4 @@
+Metti qui le foto del cliente: menu, logo, locale, slogan, cose divertenti.
+Solo foto di cui hai il permesso d'uso. Gli originali non vengono mai modificati:
+le versioni ottimizzate per il sito finiscono in img/.
+Puoi cancellare questo file.
