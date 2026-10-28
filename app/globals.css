@@ -365,6 +365,24 @@ a {
   font-weight: 900;
   color: var(--rosso);
 }
+.elenco-volantino li {
+  display: flex; /* lo span resta largo quanto il testo: serve a misurarlo */
+}
+.elenco-volantino span {
+  white-space: nowrap;
+}
+/* components/pasta-che-si-stende.tsx: dimensioni e larghezza le decide lo script. */
+.elenco-volantino[data-pronta] span {
+  line-height: 0.9;
+  will-change: font-stretch;
+}
+.elenco-volantino[data-pronta] li + li {
+  margin-top: 0.12em;
+}
+/* Le righe piene si stendono da destra, le sottili da sinistra: tirata da due mani. */
+.elenco-volantino[data-pronta] li:nth-child(even) {
+  justify-content: flex-end;
+}
 /* Come nel volantino: righe sottili e righe piene alternate. */
 .elenco-volantino li:nth-child(odd) {
   font-size: clamp(1.25rem, 6vw, 2.25rem);
@@ -716,6 +734,15 @@ a {
   }
   .foto-apertura img {
     aspect-ratio: 4 / 5;
+  }
+
+  /* Il blocco del volantino al centro, come il pannello rosso di menu2.png. */
+  .cosa .titolo-sezione {
+    text-align: center;
+  }
+  .cosa .elenco-volantino {
+    max-width: 44rem;
+    margin-inline: auto;
   }
 
   .schede {

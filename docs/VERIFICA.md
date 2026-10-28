@@ -30,7 +30,7 @@ piccolo (134 px di larghezza originale).
 | Testo "Le speciali" | tutte | "12 pizze fuori dal solito" | Frase da brochure | Ora: "12 pizze speciali, per esempio: …" |
 | Pagina 404 | tutte | Testo di Next in inglese | Fuori lingua | Corretto |
 | Prima schermata | 768 | La foto della pizza è piccola e ritagliata in verticale, il cornicione si perde | Estetica, non uso | **Non corretto**, da rivedere con foto migliori |
-| Elenco del volantino | 1280 | Colonna stretta a sinistra, due terzi vuoti a destra | Spazio sprecato | **Non corretto**: voluto come eco del volantino, discutibile |
+| Elenco del volantino | 1280 | Colonna stretta a sinistra, due terzi vuoti a destra | Spazio sprecato | Corretto il 28/10 con l'effetto "pasta che si stende": blocco giustificato centrato |
 | Logo | tutte | Il file è 134×68 px: a 2x (telefoni) è sfocato | Prima cosa che si vede | **Non correggibile** senza il file originale: va chiesto al locale |
 | Bibite | 390 | Cinque [DA CONFERMARE] di fila rendono la lista pesante | Ma sono dubbi veri sul volantino | Lasciato: si tolgono quando il titolare conferma |
 
@@ -62,3 +62,12 @@ riportano tutto com'era. In produzione: senza database o con database irraggiung
 mostra i dati iniziali e l'admin mostra un riquadro rosso e blocca i salvataggi
 (`admin-390-database-non-collegato.png`). Con `ADMIN_PASSWORD` vuota o d'esempio la build e
 `next start` si fermano con un messaggio.
+
+## Effetto "la pasta che si stende" (aggiunto su richiesta dell'utente)
+Le sei righe del volantino partono strette (larghezza del font al 62%) e, scorrendo, si
+allargano fino al 125% componendo il blocco giustificato di `menu2.png`; le righe piene da
+destra, le sottili da sinistra. Provato con Playwright a 390 e 1280 px (`strumenti/prova-pasta.js`):
+a fine corsa ogni riga misura quanto il contenitore (356-357 px su 358 a 390 px), nessuno
+scorrimento orizzontale, nessun errore in console. Con "riduci movimento" le righe sono subito
+stese, senza animazione. Senza JavaScript resta l'elenco statico di prima. Costo: nessuna
+immagine né libreria, solo l'asse di larghezza del font già caricato.

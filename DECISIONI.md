@@ -111,3 +111,12 @@ documentazione lo limita a uso personale non commerciale, e un sito che promuove
 (o che si viene pagati per fare o ospitare) è commerciale
 ([Vercel, Fair use guidelines](https://vercel.com/docs/limits/fair-use-guidelines), aggiornata
 14/09/2026). Alternativa più economica non provata: Cloudflare Workers con l'adattatore OpenNext.
+
+## 6. Effetto "wow" (richiesta dell'utente, 28/10/2026)
+Scelto: **"la pasta che si stende"**. Le righe del volantino ("Pizza al mattone, Panuozzi…") si
+allargano mentre si scorre, come pasta tirata, fino a diventare il blocco giustificato del
+volantino vero (`menu2.png`). Motivi: nasce dal materiale del locale (le sue parole, la sua
+impaginazione), parla di pasta e forno senza illustrazioni inventate, funziona a qualsiasi ora
+(non dipende dall'apertura) e pesa zero (asse di larghezza del font Archivo, già caricato).
+Scartata un'insegna al neon "APERTO" che si accende alle 18: d'effetto, ma in una demo fatta di
+giorno si vedrebbe spenta, e il neon non è nell'identità del locale.

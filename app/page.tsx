@@ -1,5 +1,6 @@
 import { DaConfermare } from "@/components/da-confermare";
 import { IconaPosizione, IconaSacchetto, IconaTelefono } from "@/components/icone";
+import PastaCheSiStende from "@/components/pasta-che-si-stende";
 import SchedeMenu from "@/components/schede-menu";
 import StatoApertura from "@/components/stato-apertura";
 import {
@@ -134,20 +135,22 @@ export default async function Home() {
         </section>
 
         {/* --- Cosa facciamo --------------------------------------------- */}
-        <section className="sezione" aria-labelledby="cosa">
+        <section className="sezione cosa" aria-labelledby="cosa">
           <div className="contenitore">
             <h2 className="titolo-sezione" id="cosa">
               Cosa facciamo
             </h2>
             {/* Le sei righe del volantino (menu2.png), nello stesso ordine. */}
-            <ul className="elenco-volantino">
-              <li>Pizza al mattone</li>
-              <li>Panuozzi</li>
-              <li>Pizza al tegamino</li>
-              <li>Focacce</li>
-              <li>Teglie su ordinazione</li>
-              <li>Farinate</li>
-            </ul>
+            <PastaCheSiStende
+              righe={[
+                "Pizza al mattone",
+                "Panuozzi",
+                "Pizza al tegamino",
+                "Focacce",
+                "Teglie su ordinazione",
+                "Farinate",
+              ]}
+            />
 
             <div className="schede">
               <article className="scheda">
