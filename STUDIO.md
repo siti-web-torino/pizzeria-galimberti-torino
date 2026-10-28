@@ -218,3 +218,68 @@ Consegna a domicilio: **€ 2,00** (`menu2.png`). Il volantino non dice zona ser
 - Foto del locale, dell'insegna, del forno.
 - Cosa sia "Rinforzo" e "Giogio"/"Porrosa" scritti bene.
 - Data del volantino: se i prezzi sono aggiornati.
+
+---
+
+# Contesto e criteri di design
+
+Ricerca fatta il 28/10/2026 con ricerca web e lettura delle pagine (WebFetch). Le pagine
+Instagram, Facebook, Glovo e Just Eat non si sono lasciate leggere (contenuto vuoto o 403):
+per quelle ho solo ciò che mostrano i risultati di ricerca.
+
+## A. Che cosa cerca chi apre il sito di una pizzeria, e in che ordine
+- Orari, indirizzo e telefono prima ancora del menu: lo riporta un progettista che ha rifatto
+  un sito di ristorante su questa base ([Coroflot, C. Coleman](https://www.coroflot.com/Christopher_Coleman/Web-Design)),
+  e la stessa lista (contatti, orari, menu, foto, recensioni) è in
+  [QSR Web, 2013](https://www.qsrweb.com/articles/5-things-first-time-visitors-need-to-see-on-a-restaurants-website/),
+  che sconsiglia il menu in PDF. **Prove deboli e vecchie** (2013-2016, blog di settore, studi
+  originali non recuperati): le uso come indicazione, non come dato.
+- La ricerca di ristoranti da telefono ha picchi nelle ore dei pasti (sintesi di uno studio Think with
+  Google riportata da [Restroworks](https://www.restroworks.com/blog/restaurant-website/); studio originale non letto).
+- Supposizione mia, coerente con le note: per un'attività che vive di telefono e Just Eat la
+  sequenza è **"è aperto stasera?" → "cosa prendo e quanto costa?" → "chiamo / ordino"**,
+  con "dov'è" importante solo per chi passa a ritirare.
+
+## B. Siti esaminati (principi, non da copiare)
+| Sito | Cosa c'è sopra la piega | Menu da telefono | Azioni | Cosa funziona / cosa no |
+|---|---|---|---|---|
+| [Pizzium](https://www.pizzium.com/) (catena, anche a Torino) | Foto + 3 bottoni: Prenota, Ordina (Deliveroo), Menu | Solo rimando a pagina dedicata | Prenota, ordina, tel: per sede, "portami qui" su Google Maps | Funziona: azioni subito visibili e orari sulla scheda della sede. Non funziona: promo e programma fedeltà prima del menu |
+| [Berberè](https://www.berberepizza.it/) (catena, anche a Torino) | Testo su "perché la nostra pizza è più buona" | Rimando | Prenota, Delivery esterno, tel: per sede | Funziona: tel: cliccabile. Non funziona: orari assenti dalla home, cookie banner sopra i contenuti |
+| [Gino Sorbillo](https://www.sorbillo.it/) | Foto di famiglia/storia | Non in home | Nessun bottone ordina/prenota | Non funziona per chi deve ordinare: orari e indirizzi nascosti |
+| [Da Michele](https://www.damichele.net/) | Slider delle sedi | Menu dietro un bottone | Nessuna chiamata in evidenza, telefono solo nel footer | Funziona solo per chi conosce già il nome |
+| Pizzerie torinesi al padellino/teglia: Gli amici del tegamino, Padellino & Farinata, Bricks (fonti: [Dissapore](https://www.dissapore.com/pizzerie/torino-le-12-migliori-pizze-al-padellino/), [50 Top Pizza](https://www.50toppizza.it/referenza/padellino-farinata), [Scatti di Gusto](https://www.scattidigusto.it/bricks-to-go-a-torino-menu-e-prezzi)) | **Non ho trovato un sito ufficiale** per nessuna: vivono su schede di guide, directory e social | – | – | Osservato: le informazioni su di loro sono sparse e non sempre coerenti tra fonti |
+
+Principi tratti: tel: cliccabile e orari sulla prima schermata (Pizzium lo fa, Sorbillo e Da Michele no);
+menu in pagina, non dietro un link né in PDF; niente promo o storie prima delle informazioni pratiche.
+
+## C. Cosa dicono le fonti pubbliche di questo locale
+| Punto | Fonte | Affidabilità |
+|---|---|---|
+| Esiste un profilo Instagram `@pizzeria_galimberti` e una pagina Facebook "Pizzeria Galimberti" | [Instagram](https://www.instagram.com/pizzeria_galimberti/), [Facebook](https://www.facebook.com/p/Pizzeria-Galimberti-100084217050084/) (titoli dai risultati di ricerca) | Coerente con `menu2.png` |
+| Il profilo Instagram riporta 18:00-22:30, martedì-domenica e i due numeri delle note | Sintesi del risultato di ricerca (pagina non leggibile direttamente) | Media |
+| È su Just Eat: `justeat.it/restaurants-pizzeria-galimberti-torino-10134-1/menu` | Risultato di ricerca | Il link non era nelle note: **[DA CONFERMARE]** che sia quello giusto |
+| Su Just Eat, secondo la sintesi della ricerca, Margherita € 7,00 e Diavola € 9,00 (volantino: € 5,50 e € 7,00) | Sintesi del risultato di ricerca; pagina 403 | **Non verificato.** Se vero, i prezzi in app sono più alti di quelli del volantino |
+| È su Glovo | [Glovo](https://glovoapp.com/it/it/torino/pizzeria-galimberti-tor/) | Pagina vuota alla lettura; coerente con `menu2.png` |
+| Restaurant Guru: valutazione Google 4,7/5 su 132 recensioni; recensioni visibili positive: pizza "buona", croccante, servizio gentile, locale pulito; una recensione cita il consumo sul posto | [Restaurant Guru](https://restaurantguru.com/Pizzeria-Galimberti-Turin) | **Bassa**: lo stesso sito in un altro risultato dava 2,4/5 su 131, e indica il locale aperto tutti i giorni, lunedì compreso, in contrasto con volantino e note |
+| Omonimo da **non** confondere: Cammafà, pizzeria napoletana in Piazza Galimberti 23 | [50 Top Pizza](https://www.50toppizza.it/en/pizzeria/2018/cammafa/), [Gambero Rosso](https://www.gamberorosso.it/ristoranti/scheda-pizzeria/cammafa) | Altra attività: le sue recensioni e i suoi premi non vanno attribuiti |
+| Altro omonimo: Lasagnammm - Galimberti, Piazza Galimberti 21, su Just Eat | Risultato di ricerca | Altra attività |
+| Contesto: a Torino la pizza al tegamino/padellino con la farinata è la tradizione locale | [Scatti di Gusto](https://www.scattidigusto.it/lezioni-di-pizza-la-ricetta-al-padellino-della-tradizione-di-torino/), [Dissapore](https://www.dissapore.com/pizzerie/torino-le-12-migliori-pizze-al-padellino/) | Buona per il contesto; Galimberti fa tegamino e farinate (`menu2.png`, `menu1.png`) |
+
+Nessun articolo giornalistico sul locale trovato. Recensioni da non citare nel sito: fonte
+inaffidabile e senza consenso.
+
+## D. Preferenze dell'utente
+- Area admin per il titolare, stack Next.js, hosting con backend: deroghe esplicite, annotate
+  in DECISIONI.md. Non ci sono preferenze estetiche.
+
+## E. Criteri di design
+| # | Criterio | Base |
+|---|---|---|
+| 1 | **Prima schermata da telefono: cosa è (pizzeria d'asporto e consegna), se è aperto adesso, due bottoni "Chiama" e "Just Eat".** | Osservato (A, Pizzium) + supposto (canali dalle note) |
+| 2 | **Una barra fissa in basso su telefono con Chiama, Ordina, Mappa**, sempre a un tocco. | Supposto (scenario venerdì sera per strada) |
+| 3 | **Menu in pagina, non PDF, con le categorie come schede: qualsiasi pizza con prezzo in massimo 3 tocchi.** | Osservato (QSR Web; i siti delle catene lo nascondono) |
+| 4 | **Il sito è la fonte giusta degli orari**: orari settimanali chiari, giorno di chiusura, avviso in cima per ferie e chiusure. Le directory oggi dicono cose sbagliate (Restaurant Guru: aperto il lunedì). | Osservato (C) |
+| 5 | **Mettere in evidenza ciò che a Torino distingue: tegamino, farinata, teglie su ordinazione fino a 4 gusti.** | Osservato (volantino + tradizione torinese) |
+| 6 | **Nessun "Prenota":** non so se ci sono tavoli; le azioni sono chiamare, ordinare, ritirare. | Osservato (note) + incertezza dichiarata |
+| 7 | **Tono del volantino:** del tu, frasi corte, nomi dei prodotti invece di aggettivi. "Stasera pizza?" è già loro. | Osservato (`menu2.png`) |
+| 8 | **Leggero:** poche foto, compresse, nessun caricamento che blocca i bottoni su 4G. | Supposto |
