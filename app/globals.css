@@ -1,0 +1,771 @@
+/*
+ * Pizzeria Galimberti — direzione "Il volantino sul bancone" (DECISIONI.md).
+ * Rosso del logo solo per testata, bottoni principali e titoli; il resto è
+ * carta chiara, come il menu stampato. Mobile-first: 390px, poi 768 e 1100.
+ */
+
+:root {
+  /* Colori: campionati dalle foto del locale (STUDIO.md) */
+  --rosso: #912427; /* logo.png */
+  --rosso-scuro: #5e1a1e;
+  --rosso-chiaro: #f4e6e3;
+  --carta: #fbf8f3;
+  --carta-2: #f3ede4;
+  --inchiostro: #231f1e;
+  --grigio: #6b625e; /* 5.6:1 su --carta */
+  --linea: #ddd3c8;
+  --crosta: #9b4727; /* tegamino.png */
+  --verde: #1f7a43;
+  --giallo: #fff1b8;
+
+  /* Scala tipografica */
+  --t-xs: 0.8125rem;
+  --t-s: 0.9375rem;
+  --t-m: 1.0625rem;
+  --t-l: 1.3125rem;
+  --t-xl: clamp(1.75rem, 6vw, 2.5rem);
+  --t-xxl: clamp(3.25rem, 15vw, 7rem);
+
+  /* Spaziature */
+  --s-1: 0.25rem;
+  --s-2: 0.5rem;
+  --s-3: 0.75rem;
+  --s-4: 1rem;
+  --s-5: 1.5rem;
+  --s-6: 2rem;
+  --s-7: 3rem;
+  --s-8: 4.5rem;
+
+  --larghezza: 72rem;
+  --gutter: 1rem;
+  --barra: 4rem; /* barra azioni in basso, solo telefono */
+  --tocco: 2.75rem; /* 44px */
+
+  color-scheme: light;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+  scroll-padding-top: 4rem;
+}
+
+body {
+  margin: 0;
+  background: var(--carta);
+  color: var(--inchiostro);
+  font-family: var(--font-archivo), system-ui, sans-serif;
+  font-size: var(--t-m);
+  line-height: 1.5;
+  padding-bottom: calc(var(--barra) + env(safe-area-inset-bottom));
+  overflow-x: hidden;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 3px solid var(--inchiostro);
+  outline-offset: 3px;
+  box-shadow: 0 0 0 6px #fff;
+}
+
+.su-rosso :focus-visible {
+  outline-color: #fff;
+  box-shadow: 0 0 0 6px var(--inchiostro);
+}
+
+.salta {
+  position: absolute;
+  left: var(--s-2);
+  top: -4rem;
+  z-index: 50;
+  background: #fff;
+  padding: var(--s-3) var(--s-4);
+  font-weight: 700;
+}
+.salta:focus {
+  top: var(--s-2);
+}
+
+.contenitore {
+  width: 100%;
+  max-width: var(--larghezza);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.titolo-sezione {
+  font-stretch: 75%;
+  font-weight: 900;
+  font-size: var(--t-xl);
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  color: var(--rosso);
+  margin: 0 0 var(--s-5);
+}
+
+/* --- [DA CONFERMARE] ---------------------------------------------------- */
+
+.dc {
+  display: inline-block;
+  font-size: var(--t-xs);
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: 0.02em;
+  background: var(--giallo);
+  color: var(--inchiostro);
+  border: 1px dashed var(--inchiostro);
+  padding: 0.1em 0.45em;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+.dc-box {
+  background: var(--giallo);
+  border: 1px dashed var(--inchiostro);
+  padding: var(--s-3) var(--s-4);
+  font-size: var(--t-s);
+  margin: 0 0 var(--s-5);
+}
+.dc-box strong {
+  letter-spacing: 0.02em;
+}
+
+/* --- Avviso in cima ----------------------------------------------------- */
+
+.avviso {
+  background: var(--inchiostro);
+  color: #fff;
+  font-size: var(--t-s);
+  font-weight: 600;
+  padding: var(--s-3) 0;
+}
+.avviso p {
+  margin: 0;
+}
+.avviso b {
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: var(--t-xs);
+  margin-right: var(--s-2);
+  color: var(--giallo);
+}
+
+/* --- Testata e apertura (rosso) ----------------------------------------- */
+
+.su-rosso {
+  background: var(--rosso);
+  color: #fff;
+}
+
+.testata {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s-4);
+  padding-block: var(--s-3);
+}
+
+.testata img {
+  width: 104px;
+  height: auto;
+}
+
+.nav {
+  display: flex;
+  gap: var(--s-1);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.nav a {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--tocco);
+  padding-inline: var(--s-2);
+  font-size: var(--t-xs);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+}
+.nav a:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.apertura {
+  padding-bottom: var(--s-6);
+}
+
+.apertura-griglia {
+  display: grid;
+  gap: var(--s-5);
+}
+
+.occhiello {
+  font-size: var(--t-s);
+  font-weight: 600;
+  margin: var(--s-4) 0 var(--s-2);
+  letter-spacing: 0.01em;
+}
+
+.slogan {
+  font-stretch: 70%;
+  font-weight: 900;
+  font-size: var(--t-xxl);
+  line-height: 0.88;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  margin: 0 0 var(--s-4);
+}
+
+.stato {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-2);
+  min-height: var(--tocco);
+  background: #fff;
+  color: var(--inchiostro);
+  font-weight: 700;
+  font-size: var(--t-s);
+  padding: var(--s-2) var(--s-4);
+  border-radius: 999px;
+  margin: 0 0 var(--s-4);
+}
+.stato::before {
+  content: "";
+  width: 0.7em;
+  height: 0.7em;
+  border-radius: 50%;
+  background: var(--grigio);
+  flex: none;
+}
+.stato[data-tipo="aperto"]::before {
+  background: var(--verde);
+}
+.stato[data-tipo="apre"]::before {
+  background: #c98a00;
+}
+.stato[data-tipo="chiuso"]::before {
+  background: var(--rosso);
+}
+
+.offerta {
+  font-size: var(--t-m);
+  max-width: 34rem;
+  margin: 0 0 var(--s-5);
+}
+
+.azioni {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-3);
+  align-items: flex-start;
+}
+
+.bottone {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--s-2);
+  min-height: 3.25rem;
+  padding: var(--s-2) var(--s-5);
+  font: inherit;
+  font-weight: 800;
+  font-size: var(--t-m);
+  text-decoration: none;
+  border: 2px solid currentColor;
+  cursor: pointer;
+}
+.bottone svg {
+  width: 1.2em;
+  height: 1.2em;
+  flex: none;
+}
+.bottone-pieno {
+  background: #fff;
+  color: var(--rosso);
+  border-color: #fff;
+}
+.bottone-pieno:hover {
+  background: var(--carta-2);
+}
+.bottone-vuoto {
+  color: #fff;
+}
+.bottone-vuoto:hover {
+  background: var(--rosso-scuro);
+}
+.bottone-rosso {
+  background: var(--rosso);
+  border-color: var(--rosso);
+  color: #fff;
+}
+.bottone-rosso:hover {
+  background: var(--rosso-scuro);
+  border-color: var(--rosso-scuro);
+}
+.bottone-chiaro {
+  color: var(--rosso);
+}
+.bottone-chiaro:hover {
+  background: var(--rosso-chiaro);
+}
+
+.con-nota {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--s-1);
+}
+
+.foto-apertura {
+  margin-inline: calc(var(--gutter) * -1);
+}
+.foto-apertura img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  object-position: 50% 60%;
+}
+
+/* --- Cosa facciamo ------------------------------------------------------ */
+
+.sezione {
+  padding-block: var(--s-7);
+}
+
+.elenco-volantino {
+  list-style: none;
+  margin: 0 0 var(--s-6);
+  padding: 0;
+  font-stretch: 75%;
+  text-transform: uppercase;
+  line-height: 0.95;
+  letter-spacing: -0.01em;
+}
+.elenco-volantino li {
+  font-size: clamp(1.75rem, 9vw, 3.5rem);
+  font-weight: 900;
+}
+.elenco-volantino li:nth-child(odd) {
+  font-size: clamp(1.25rem, 6vw, 2.25rem);
+  font-weight: 700;
+  color: var(--rosso);
+}
+
+.schede {
+  display: grid;
+  gap: var(--s-6);
+}
+
+.scheda {
+  display: grid;
+  gap: var(--s-4);
+  align-content: start;
+}
+.scheda img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+.scheda h3 {
+  font-stretch: 75%;
+  font-weight: 900;
+  font-size: var(--t-l);
+  text-transform: uppercase;
+  margin: 0;
+}
+.scheda p {
+  margin: 0;
+}
+.citazione {
+  border-left: 4px solid var(--rosso);
+  padding-left: var(--s-4);
+  font-weight: 600;
+}
+
+/* --- Menu --------------------------------------------------------------- */
+
+.menu {
+  background: #fff;
+  border-block: 1px solid var(--linea);
+}
+
+.categorie {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: #fff;
+  border-bottom: 1px solid var(--linea);
+  margin-inline: calc(var(--gutter) * -1);
+  margin-bottom: var(--s-5);
+}
+.categorie ul {
+  display: flex;
+  gap: var(--s-2);
+  overflow-x: auto;
+  scrollbar-width: none;
+  margin: 0;
+  padding: var(--s-2) var(--gutter);
+  list-style: none;
+}
+.categorie ul::-webkit-scrollbar {
+  display: none;
+}
+.categorie a {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--tocco);
+  padding-inline: var(--s-4);
+  border: 1.5px solid var(--inchiostro);
+  border-radius: 999px;
+  font-size: var(--t-s);
+  font-weight: 700;
+  white-space: nowrap;
+  text-decoration: none;
+}
+.categorie a[aria-current] {
+  background: var(--inchiostro);
+  border-color: var(--inchiostro);
+  color: #fff;
+}
+.categorie a:hover {
+  background: var(--rosso);
+  border-color: var(--rosso);
+  color: #fff;
+}
+
+.categoria {
+  margin-bottom: var(--s-7);
+}
+.categoria h3 {
+  font-stretch: 75%;
+  font-weight: 900;
+  font-size: var(--t-l);
+  text-transform: uppercase;
+  color: var(--rosso);
+  margin: 0 0 var(--s-3);
+  padding-bottom: var(--s-2);
+  border-bottom: 3px solid var(--rosso);
+}
+
+.voci {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.voce {
+  padding: var(--s-3) 0;
+  border-bottom: 1px solid var(--linea);
+}
+.voce-riga {
+  display: flex;
+  align-items: baseline;
+  gap: var(--s-2);
+}
+.voce-nome {
+  font-weight: 800;
+}
+.voce-riga::after {
+  content: "";
+  order: 2;
+  flex: 1;
+  border-bottom: 2px dotted var(--linea);
+  transform: translateY(-0.3em);
+  min-width: 1rem;
+}
+.voce-prezzo {
+  order: 3;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.voce-ingredienti {
+  margin: 0.1rem 0 0;
+  color: var(--grigio);
+  font-size: var(--t-s);
+}
+.voce .dc {
+  margin-left: var(--s-1);
+}
+
+.consegna {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--s-2) var(--s-3);
+  background: var(--rosso-chiaro);
+  padding: var(--s-4);
+  font-weight: 700;
+  margin: 0 0 var(--s-6);
+}
+
+.nota-piccola {
+  font-size: var(--t-xs);
+  color: var(--grigio);
+}
+
+/* Da telefono una categoria alla volta (components/schede-menu.tsx). */
+@media (max-width: 767px) {
+  .categoria[data-nascosta] {
+    display: none;
+  }
+}
+
+/* --- Orari e dove ------------------------------------------------------- */
+
+.dove {
+  background: var(--carta-2);
+}
+
+.dove-griglia {
+  display: grid;
+  gap: var(--s-6);
+}
+
+.orari {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--t-m);
+}
+.orari th,
+.orari td {
+  text-align: left;
+  padding: var(--s-2) 0;
+  border-bottom: 1px solid var(--linea);
+}
+.orari th {
+  font-weight: 600;
+}
+.orari .giorno {
+  display: inline-block;
+}
+.orari .giorno::first-letter {
+  text-transform: uppercase;
+}
+.link-social {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--tocco);
+  font-weight: 700;
+}
+.orari td {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+.orari tr[data-oggi] th,
+.orari tr[data-oggi] td {
+  font-weight: 800;
+  color: var(--rosso);
+}
+.orari .chiuso {
+  color: var(--grigio);
+}
+
+.blocco h3 {
+  font-size: var(--t-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--grigio);
+  margin: 0 0 var(--s-2);
+}
+.blocco + .blocco {
+  margin-top: var(--s-5);
+}
+.indirizzo {
+  font-stretch: 75%;
+  font-weight: 900;
+  font-size: var(--t-xl);
+  line-height: 1;
+  text-transform: uppercase;
+  margin: 0 0 var(--s-4);
+}
+.telefoni {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.telefoni a {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 3rem;
+  font-weight: 800;
+  font-size: var(--t-l);
+  text-decoration: none;
+  border-bottom: 1px solid var(--linea);
+}
+.telefoni a span {
+  font-size: var(--t-xs);
+  font-weight: 600;
+  color: var(--grigio);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+.telefoni a:hover {
+  color: var(--rosso);
+}
+
+.ferie {
+  list-style: none;
+  margin: var(--s-4) 0 0;
+  padding: var(--s-3) var(--s-4);
+  background: var(--inchiostro);
+  color: #fff;
+  font-weight: 600;
+}
+
+/* --- Piede -------------------------------------------------------------- */
+
+.piede {
+  padding-block: var(--s-6);
+  font-size: var(--t-s);
+}
+.piede p {
+  margin: 0 0 var(--s-2);
+}
+
+/* --- Barra azioni (telefono) -------------------------------------------- */
+
+.barra {
+  position: fixed;
+  inset: auto 0 0 0;
+  z-index: 20;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  background: var(--rosso-scuro);
+  padding-bottom: env(safe-area-inset-bottom);
+  box-shadow: 0 -1px 0 rgba(0, 0, 0, 0.2);
+}
+.barra a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  height: var(--barra);
+  color: #fff;
+  font-size: var(--t-xs);
+  font-weight: 700;
+  text-decoration: none;
+  letter-spacing: 0.02em;
+}
+.barra a + a {
+  border-left: 1px solid rgba(255, 255, 255, 0.18);
+}
+.barra a:first-child {
+  background: var(--rosso);
+}
+.barra svg {
+  width: 1.4rem;
+  height: 1.4rem;
+}
+.barra :focus-visible {
+  outline-color: #fff;
+  outline-offset: -4px;
+  box-shadow: none;
+}
+
+/* --- Tablet ------------------------------------------------------------- */
+
+@media (min-width: 768px) {
+  :root {
+    --gutter: 2rem;
+  }
+
+  body {
+    padding-bottom: 0;
+  }
+  .barra {
+    display: none;
+  }
+
+  .nav a {
+    font-size: var(--t-s);
+  }
+
+  .testata img {
+    width: 134px;
+  }
+
+  .apertura-griglia {
+    grid-template-columns: 1.1fr 0.9fr;
+    align-items: end;
+  }
+  .foto-apertura {
+    margin: 0;
+  }
+  .foto-apertura img {
+    aspect-ratio: 4 / 5;
+  }
+
+  .schede {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--s-5);
+  }
+
+  .colonne-menu {
+    columns: 2;
+    column-gap: var(--s-7);
+  }
+  .categoria {
+    break-inside: avoid-column;
+  }
+  .categoria-lunga {
+    break-inside: auto;
+  }
+
+  .dove-griglia {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--s-8);
+  }
+}
+
+/* --- Desktop ------------------------------------------------------------ */
+
+@media (min-width: 1100px) {
+  .sezione {
+    padding-block: var(--s-8);
+  }
+  .apertura {
+    padding-bottom: var(--s-7);
+  }
+  .foto-apertura img {
+    max-height: 34rem;
+  }
+  .colonne-menu {
+    columns: 3;
+  }
+  .categoria-lunga {
+    break-inside: auto;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+    animation: none !important;
+  }
+}

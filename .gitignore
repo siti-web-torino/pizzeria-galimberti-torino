@@ -1,6 +1,10 @@
 strumenti/
 node_modules/
 .next/
-.env*
-!.env.example
-data/*.json
+out/
+.env
+.env*.local
+.data/
+*.tsbuildinfo
+next-env.d.ts
+.DS_Store
